@@ -7,23 +7,23 @@ export const Asteroids = ({ startDate, endDate }) => {
     const [selectedAsteroid, setSelectedAsteroid] = useState(null);
 
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                let response;
+                if (startDate === endDate) {
+                    response = await fetch(`http://localhost:3000/?date=${startDate}`);
+                } else {
+                    response = await fetch(`http://localhost:3000/range?start_date=${startDate}&end_date=${endDate}`);
+                }
+                const data = await response.json();
+                setAsteroids(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
 
-        if (startDate === endDate) {
-            fetch(`http://localhost:3000/?date=${startDate}`)
-                .then(response => response.json())
-                .then(data => setAsteroids(data))
-                .catch(err => console.log(err))
-
-        } else {
-
-            fetch(`http://localhost:3000/range?start_date=${startDate}&end_date=${endDate}`)
-                .then(response => response.json())
-                .then(data => setAsteroids(data))
-                .catch(err => console.log(err))
-
-        }
-
-    }, [startDate, endDate])
+        fetchData();
+    }, [startDate, endDate]);
 
     const handleAsteroidClick = (asteroid) => {
         setSelectedAsteroid(asteroid);

@@ -2,12 +2,12 @@ import React, { useState, useRef } from "react";
 import { Asteroids } from "./Asteroids";
 
 export const DatePicker = () => {
-    const startDateRef = useRef(null);
-    const endDateRef = useRef(null);
+    const startDateRef = useRef("2015-09-07");
+    const endDateRef = useRef("2015-09-07");
 
 
-    const [startValue, setStartValue] = useState("2015-09-07");
-    const [endValue, setEndValue] = useState("2015-09-08");
+    const [startValue, setStartValue] = useState();
+    const [endValue, setEndValue] = useState();
     const [error, setError] = useState("");
 
     const setDates = (e) => {
@@ -34,12 +34,12 @@ export const DatePicker = () => {
             <h1>Proyecto Asteroides</h1>
             <h2>Seleccione las fechas de búsqueda</h2>
             <div>
-                <form>
+                <form onSubmit={setDates}>
                     <label htmlFor="start">Start date:</label>
                     <input required type="date" ref={startDateRef} id="start" defaultValue="2015-09-07" name="start" min="2010-01-01" max={new Date().toISOString().split('T')[0]} />
                     <label htmlFor="end">End date:</label>
                     <input required type="date" ref={endDateRef} id="end" defaultValue="2015-09-08" name="end" min="2010-01-01" max={new Date().toISOString().split('T')[0]} />
-                    <button onClick={setDates}>Submit</button>
+                    <button type="submit">Submit</button>
                 </form>
 
                 {error && <p style={{ color: "red" }}>{error}</p>}

@@ -1,0 +1,18 @@
+Test description
+Create an app to see information about asteroids. The app should:
+
+Display a list of asteroids // endpoint done
+Search by a range of dates // La api solo permite que el rango sean 7 dias endpoint done
+See the detail of the asteroids by clicking on one of the items 
+Sort the asteroids by name // endpoing done
+
+Optional
+Add them to favourite
+Show a list of favourite
+Display details of favourite asteroids by click on the items form the list
+
+Use the following API:
+
+https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY
+
+

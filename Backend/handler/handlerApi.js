@@ -1,6 +1,8 @@
 
 async function getApiInfoByDate(date) {
-    let allAsteroids = await fetch('https://api.nasa.gov/neo/rest/v1/feed?start_date=' + date + '&end_date=' + date + '&api_key=DEMO_KEY')
+
+
+    let allAsteroids = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${date}&end_date=${date}&api_key=DEMO_KEY`)
         .then(res => res.json())
         .then(data => data.near_earth_objects);
     return allAsteroids;
@@ -19,7 +21,7 @@ async function getApiInfoByDates(date1, date2) {
     let diffDays = differenceInDays(date1, date2);
     if (diffDays <= 7) {
 
-        let allAsteroids = await fetch('https://api.nasa.gov/neo/rest/v1/feed?start_date=' + date1 + '&end_date=' + date2 + '&api_key=DEMO_KEY')
+        let allAsteroids = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${date1}&end_date=${date2}&api_key=DEMO_KEY`)
             .then(res => res.json())
             .then(data => data.near_earth_objects);
         return allAsteroids;

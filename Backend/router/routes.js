@@ -11,8 +11,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 
     try {
-        let result = await getApiInfoByDate(req.query.date);
 
+        let result = await getApiInfoByDate(req.query.date);
         const [names, diameter, hazardous] = await Promise.all([
             asteroidsNames(result),
             asteroidsDiameter(result),

@@ -4,9 +4,12 @@ export const Asteroids = ({ startDate, endDate }) => {
 
     console.log(startDate, endDate)
     const [asteroids, setAsteroids] = useState([]);
+    const [isPending, setIsPending] = useState(true);
+
     const [selectedAsteroid, setSelectedAsteroid] = useState(null);
 
     useEffect(() => {
+
         const fetchData = async () => {
             try {
                 let response;
@@ -17,6 +20,7 @@ export const Asteroids = ({ startDate, endDate }) => {
                 }
                 const data = await response.json();
                 setAsteroids(data);
+                setIsPending(false);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -29,11 +33,11 @@ export const Asteroids = ({ startDate, endDate }) => {
         setSelectedAsteroid(asteroid);
     };
 
-    console.log(asteroids)
     return (
         <>
-            {asteroids.map((asteroid, index) => (
 
+            {isPending && <p>Loading...</p>}
+            {asteroids.map((asteroid, index) => (
                 <div key={asteroid.name}>
                     <div className="asteroid">
                         <button onClick={() => handleAsteroidClick(asteroid)}>Name: {asteroid.name}</button>

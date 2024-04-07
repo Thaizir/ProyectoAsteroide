@@ -1,6 +1,5 @@
 export const DatesForm = ({ handleFormDates }) => {
 
-    console.log(handleFormDates)
     return (
 
         <>

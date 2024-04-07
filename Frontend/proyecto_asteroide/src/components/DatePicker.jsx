@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { timeDiff } from "../helpers.js/timeDiff";
 import { DatesForm } from "./DatesForm";
+import { Asteroids } from "./Asteroids";
 
 
 export const DatePicker = () => {
@@ -30,11 +31,14 @@ export const DatePicker = () => {
 
     return (
         <>
+
             <h1>Proyecto Asteroides</h1>
             <h2>Seleccione las fechas de búsqueda</h2>
             <h5>{startDate} - {endDate}</h5>
             <DatesForm handleFormDates={handleFormDates} />
             {error && <p>Las fechas no son validas</p>}
+
+            <Asteroids startDate={startDate} endDate={endDate} />
         </>
 
     )

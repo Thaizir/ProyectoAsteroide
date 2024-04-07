@@ -17,7 +17,7 @@ export const Asteroids = ({ startDate, endDate }) => {
             let response;
             if (value_1 === value_2) {
                 response = await fetch(`http://localhost:3000/?date=${startDate}`);
-                console.log(response.json())
+                console.log(response)
             } else {
                 response = await fetch(`http://localhost:3000/range?start_date=${startDate}&end_date=${endDate}`);
             }
@@ -30,7 +30,7 @@ export const Asteroids = ({ startDate, endDate }) => {
 
         fetchAsteroids(startDate, endDate)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => console.log(data.json()))
             .then(asteroid => setAsteroids(asteroid))
             .then(() => setIsPending(false))
             .catch(err => console.log(err));

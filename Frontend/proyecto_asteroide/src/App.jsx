@@ -1,13 +1,12 @@
 import './App.css'
-import { DatePicker } from './components/DatePicker';
+import { AsteroidsApp } from './components/AsteroidsApp';
 
 function App() {
 
 
   return (
     <>
-      <DatePicker />
-
+      <AsteroidsApp />
     </>
   )
 }
